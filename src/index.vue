@@ -126,9 +126,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><router-link to="baseyear"><i class="fa fa-circle-o"></i>年代群体</router-link></li>
-              <li><router-link to="carrier"><i class="fa fa-circle-o"></i>手机运营商</router-link></li>
-              <li><router-link to="email"><i class="fa fa-circle-o"></i>邮件运营商</router-link></li>
+              <li><router-link to="baseyear"><i class="fa fa-circle-o"></i>热门图书分析</router-link></li>
+              <li><router-link to="carrier"><i class="fa fa-circle-o"></i>基于年龄的热门图书分析</router-link></li>
+              <li><router-link to="email"><i class="fa fa-circle-o"></i>基于性别的热门图书分析</router-link></li>
               <!--<li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>-->
               <!--<li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>-->
               <!--<li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>-->

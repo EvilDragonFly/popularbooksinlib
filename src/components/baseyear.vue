@@ -62,10 +62,11 @@
         interestValue:state=>state.interestValue
       })
     },
-    mounted(){
-      let that=this     //$.ajax中无法识别this故将this赋值给that
-      
-      $.ajax(
+    created(){
+      //如果没有从数据库获取用户信息，先加载用户信息
+      if(this.usersInfo.length==0){
+        let that=this
+        $.ajax(
         'http://localhost:3001',
         {
         
@@ -97,8 +98,13 @@
             console.log(that.$store.state.usersInfo)
           }
         
-      })
-      console.log('ajax方法发生了')
+        })
+        console.log('ajax方法发生了')
+      }
+    },
+    mounted(){
+      this.series[0].data=this.interestValue
+      
       
       
     }
