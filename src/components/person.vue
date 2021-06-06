@@ -51,8 +51,46 @@
       }
     },
     created() {
-      let usersInfo=this.$store.getters.usersInfo       //获取存储的用户数据，计算属性
-      this.lables=usersInfo
+      if(this.$store.state.usersInfo.length==0){
+        let that=this
+        $.ajax(
+        'http://localhost:3001',
+        {
+        
+          type:"post",            //get不能传输数据体？这里只能用post
+          data:{
+            need:'usersInfo',
+          },            //client向server传输的数据，以query的形式添加到url上
+          dataType:"json",    //client接收的数据类型
+          success:function(data){
+            //alert('数据返回成功了')
+            var interestValue=new Array(0,0,0,0,0,0,0);
+            console.log(data)
+            that.$store.commit("setUsersInfo",data)      //这里store.commit方法只能放在methods中,且运行不能放在created hook中
+            $.each(data,function(index,info){
+              interestValue[0]+=info["art_value"]
+              interestValue[1]+=info["religion_value"]
+              interestValue[2]+=info["socialSci_value"]
+              interestValue[3]+=info["Sci_value"]
+              interestValue[4]+=info["literature_value"]
+              interestValue[5]+=info["hisgeo_value"]
+              interestValue[6]+=info["appliSci_value"]
+            })
+            console.log('interestvalue如下')
+            console.log(interestValue)
+            //this.$store.commit('setInterestValue',interestValue)
+            
+           
+            console.log(that.$store.state.usersInfo)
+            that.lables=that.$store.getters.usersInfo
+          }
+        
+        })
+        console.log('ajax方法发生了')
+      }
+    },
+    mounted(){
+      
     },
     computed:{
       latestLables:function(){
